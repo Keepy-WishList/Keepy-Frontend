@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-keepy-bg:           #111116;
+  --color-keepy-bg-search:    #0e0e13;
+  --color-keepy-card:         #17171f;
+  --color-keepy-card-search:  #131319;
+  --color-keepy-surface:      #1f1f26;
+  --color-keepy-surface-2:    #25252d;
+  --color-keepy-purple:       #7066f5;
+  --color-keepy-purple-dark:  #5144d4;
+  --color-keepy-purple-light: #a9a4ff;
+  --color-keepy-purple-xdark: #21009d;
+  --color-keepy-text:         #e8e8f2;
+  --color-keepy-muted:        #9090a8;
+  --color-keepy-muted-2:      #acaab1;
+  --color-keepy-cyan:         #55eafc;
+  --color-keepy-green:        #15803d;
+  --color-keepy-navy:         #1e293b;
+  --color-keepy-slate:        #cbd5e1;
+
+  /* Font families */
+  --font-manrope:     'Manrope', sans-serif;
+  --font-pretendard:  'Pretendard Variable', 'Pretendard', sans-serif;
+  --font-poetsen:     'Poetsen One', sans-serif;
+}
+
+/* Global resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #111116;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100svh;
+  font-family: 'Pretendard Variable', 'Pretendard', 'Manrope', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100svh;
+  position: relative;
+}
+
+/* Utilities not expressible in Tailwind alone */
+@layer utilities {
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
