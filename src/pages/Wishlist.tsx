@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Header from '../shared/components/Header'
 import BottomNav from '../shared/components/BottomNav'
 import ItemCard from '../shared/components/ItemCard'
@@ -15,12 +16,8 @@ const products = [
 
 const filters = ['전체', '패션', '테크', '인테리어']
 
-interface Props {
-  onProductClick: (idx: number) => void
-  onSearchClick: () => void
-}
-
-export default function Wishlist({ onProductClick, onSearchClick }: Props) {
+export default function Wishlist() {
+  const navigate = useNavigate()
   const [activeFilter, setActiveFilter] = useState('전체')
 
   return (
@@ -42,7 +39,7 @@ export default function Wishlist({ onProductClick, onSearchClick }: Props) {
             className="w-full py-4.25 pl-12 pr-4 rounded-2xl border-0 bg-keepy-bg/20 text-keepy-muted font-pretendard text-base font-medium outline-none cursor-pointer placeholder:text-keepy-muted"
             placeholder="아카이브 검색..."
             readOnly
-            onClick={onSearchClick}
+            onClick={() => navigate('/search')}
           />
         </div>
 
@@ -66,7 +63,7 @@ export default function Wishlist({ onProductClick, onSearchClick }: Props) {
         {/* Cards */}
         <div className="flex flex-col gap-4">
           {products.map((p, i) => (
-            <ItemCard key={i} {...p} onClick={() => onProductClick(i)} />
+            <ItemCard key={i} {...p} onClick={() => navigate('/detail')} />
           ))}
         </div>
       </main>
@@ -78,7 +75,7 @@ export default function Wishlist({ onProductClick, onSearchClick }: Props) {
         </svg>
       </button>
 
-      <BottomNav active="home" onSearchClick={onSearchClick} />
+      <BottomNav active="home" />
     </div>
   )
 }

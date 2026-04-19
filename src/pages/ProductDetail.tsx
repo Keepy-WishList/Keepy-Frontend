@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import Header from '../shared/components/Header'
 import BottomNav from '../shared/components/BottomNav'
 
@@ -7,32 +8,14 @@ const imgWebshot = 'https://www.figma.com/api/mcp/asset/756da052-ef19-4764-961a-
 const glassBtnCls =
   'flex items-center justify-center p-2 rounded-full border border-keepy-purple/30 bg-keepy-purple/6 backdrop-blur-sm cursor-pointer transition-colors duration-150 hover:bg-keepy-purple/15'
 
-interface Props {
-  onBack: () => void
-  onSearchClick: () => void
-}
-
-export default function ProductDetail({ onBack, onSearchClick }: Props) {
+export default function ProductDetail() {
+  const navigate = useNavigate()
   return (
     <div className="flex flex-col min-h-svh bg-keepy-bg relative">
       <Header
         leftIcon="back"
-        onLeftClick={onBack}
-        rightSlot={
-          <>
-            <button className={glassBtnCls}>
-              <svg width="18" height="20" viewBox="0 0 18 20" fill="none">
-                <path d="M15 7a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="#e8e8f2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M10.73 17a2 2 0 0 1-3.46 0" stroke="#e8e8f2" strokeWidth="1.5"/>
-              </svg>
-            </button>
-            <button className={glassBtnCls}>
-              <svg width="16" height="20" viewBox="0 0 16 20" fill="none">
-                <path d="M14 2H2a1 1 0 0 0-1 1v15l5-3 3 2 3-2 5 3V3a1 1 0 0 0-1-1z" stroke="#e8e8f2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-          </>
-        }
+        onLeftClick={() => navigate(-1)}
+        title='제품 상세'
       />
 
       <div className="pt-16 overflow-y-auto flex-1 pb-4">
@@ -153,7 +136,7 @@ export default function ProductDetail({ onBack, onSearchClick }: Props) {
         </button>
       </div>
 
-      <BottomNav active="home" onHomeClick={onBack} onSearchClick={onSearchClick} />
+      <BottomNav active="home" />
     </div>
   )
 }

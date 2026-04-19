@@ -4,12 +4,13 @@ const avatar1    = 'https://www.figma.com/api/mcp/asset/8bb5a651-62b8-4efa-bb8c-
 const avatar2    = 'https://www.figma.com/api/mcp/asset/f3a83473-4bc4-4930-a4cd-5d01793c8574'
 const avatar3    = 'https://www.figma.com/api/mcp/asset/bfbc24b8-6abc-4735-82df-bf1e4d67fcb2'
 
-interface Props { onStart: () => void }
+import { useNavigate } from 'react-router-dom'
 
 const socialBtnCls =
   'flex items-center justify-center gap-2 py-4 px-3 rounded-2xl border border-keepy-purple/30 bg-keepy-purple/6 backdrop-blur-sm text-keepy-text font-manrope text-xs cursor-pointer transition-colors duration-150 hover:bg-keepy-purple/12'
 
-export default function Onboarding({ onStart }: Props) {
+export default function Onboarding() {
+  const navigate = useNavigate()
   return (
     <div className="flex flex-col min-h-svh bg-keepy-bg relative">
 
@@ -33,7 +34,7 @@ export default function Onboarding({ onStart }: Props) {
         <div className="flex flex-col gap-4 w-full">
           <button
             className="flex items-center justify-center gap-2 w-full py-5 rounded-full border-0 bg-keepy-purple text-keepy-text font-pretendard text-base font-medium cursor-pointer transition hover:-translate-y-px hover:opacity-90 active:translate-y-0"
-            onClick={onStart}
+            onClick={() => navigate('/main')}
           >
             시작하기
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -53,22 +54,7 @@ export default function Onboarding({ onStart }: Props) {
           </div>
         </div>
 
-        {/* Social proof */}
-        <div className="flex flex-col items-center gap-2 opacity-60 pt-12">
-          <p className="font-pretendard text-[10px] font-medium text-keepy-muted tracking-[2px] uppercase text-center">
-            50,000명 이상의 큐레이터가 함께하고 있습니다.
-          </p>
-          <div className="flex items-center">
-            {[avatar1, avatar2, avatar3].map((src, i) => (
-              <div key={i} className="w-8 h-8 rounded-full border-2 border-keepy-bg bg-keepy-navy overflow-hidden -mr-2 shrink-0">
-                <img src={src} alt="" className="w-full h-full object-cover" />
-              </div>
-            ))}
-            <div className="w-8 h-8 rounded-full border-2 border-keepy-bg bg-keepy-purple-dark flex items-center justify-center shrink-0">
-              <span className="font-manrope text-[10px] text-keepy-text">+</span>
-            </div>
-          </div>
-        </div>
+        
       </div>
 
       {/* Footer */}

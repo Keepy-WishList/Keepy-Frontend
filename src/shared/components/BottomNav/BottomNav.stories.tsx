@@ -1,16 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { MemoryRouter } from 'react-router-dom'
 import BottomNav from './index';
 
 const meta: Meta<typeof BottomNav> = {
   title: 'Components/BottomNav',
   component: BottomNav,
+  decorators: [
+    (Story) => (
+      <MemoryRouter>
+        <Story />
+      </MemoryRouter>
+    ),
+  ],
   parameters: {
     layout: 'fullscreen',
   },
   argTypes: {
     active: {
       control: 'radio',
-      options: ['home', 'search', 'add', 'profile'],
+      options: ['home', 'add', 'profile'],
     },
   },
 }
@@ -20,10 +28,6 @@ type Story = StoryObj<typeof BottomNav>
 
 export const Home: Story = {
   args: { active: 'home' },
-}
-
-export const Search: Story = {
-  args: { active: 'search' },
 }
 
 export const Add: Story = {

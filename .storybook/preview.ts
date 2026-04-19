@@ -1,6 +1,7 @@
 /// <reference types="vite/client" />
 import type { Preview } from '@storybook/react-vite'
 import '../src/index.css'
+import '../src/storybook-fonts.css'
 
 const preview: Preview = {
   parameters: {

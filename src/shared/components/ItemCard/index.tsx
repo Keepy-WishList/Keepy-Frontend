@@ -1,49 +1,37 @@
 interface Props {
   img: string
   name: string
-  brand: string
   price: string
-  source: string
-  saved: string
-  badge?: string | null
+  brand: string
+  isPurchased: boolean
+  created: string
   onClick?: () => void
 }
 
-export default function ItemCard({ img, name, brand, price, source, saved, badge, onClick }: Props) {
+export default function ItemCard({ img, name, price, brand, isPurchased, created, onClick }: Props) {
   return (
     <button
-      className="flex h-33 rounded-xl overflow-hidden bg-keepy-card border-0 cursor-pointer text-left transition-transform duration-150 w-full hover:scale-[1.01] active:scale-[0.99]"
+      className="flex justify-start items-center h-28 w-full overflow-hidden glass-card p-3"
       onClick={onClick}
     >
-      <div className="w-33 h-33 shrink-0 overflow-hidden">
-        <img src={img} alt={name} className="w-full h-full object-cover" />
+      <div className="h-[98%] aspect-square rounded-[14px]">
+        <img src={img} alt={name} className="w-full h-full object-full rounded-[14px]" />
       </div>
 
-      <div className="flex-1 flex flex-col justify-between p-5 min-w-0">
-        <div className="flex flex-col gap-0.5">
-          <div className="flex items-center justify-between gap-2">
-            <span className="font-manrope text-[18px] text-keepy-text truncate">{name}</span>
-            {badge && (
-              <span className="shrink-0 px-2 py-1 rounded-md bg-keepy-bg font-pretendard text-[10px] font-medium text-keepy-green tracking-[0.5px] uppercase">
-                {badge}
-              </span>
-            )}
-          </div>
-          <span className="font-manrope text-sm text-keepy-muted">{brand}</span>
+      <div className="w-full flex flex-col justify-between items-start ml-3">
+        <div className="flex flex-row items-center justify-between w-full overflow-hidden gap-2">
+          <span className="font-pretendard text-[16px] font-semibold text-keepy-text truncate max-w-30">{name}</span>
+          <div className="text-white shrink-999">구매완료</div>
         </div>
+        <span className="font-manrope text-xs text-keepy-muted max-w-30 truncate">{brand}</span>
 
-        <div className="flex items-end justify-between">
-          <div className="flex flex-col gap-1">
-            <span className="font-manrope text-xl text-keepy-purple-dark whitespace-nowrap">{price}</span>
-            <div className="flex items-center gap-1.5 opacity-60">
-              <svg width="12" height="11" viewBox="0 0 12 11" fill="none">
-                <path d="M6 0L7.35 4.15H12L8.32 6.73L9.67 10.88L6 8.3L2.33 10.88L3.68 6.73L0 4.15H4.65L6 0Z" fill="#9090a8"/>
-              </svg>
-              <span className="font-manrope text-[11px] text-keepy-text tracking-[0.55px] uppercase">{source}</span>
-            </div>
-          </div>
-          <span className="font-pretendard text-[10px] font-medium text-keepy-muted whitespace-nowrap">{saved}</span>
+        <div className="flex flex-col mt-2">
+          <span className="font-pretendard font-semibold text-[16px] text-keepy-purple whitespace-nowrap">{price}</span>
+
         </div>
+        <span className="font-pretendard text-xs font-medium text-keepy-muted whitespace-nowrap self-end">{created}일 전 저장</span>
+
+        
       </div>
     </button>
   )

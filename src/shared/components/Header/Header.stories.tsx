@@ -6,21 +6,27 @@ const meta: Meta<typeof Header> = {
   component: Header,
   parameters: {
     layout: 'fullscreen',
+    title: 'input'
   },
   argTypes: {
     leftIcon: {
       control: 'radio',
-      options: ['menu', 'back'],
+      options: ['none', 'back'],
     },
+    hasLogo:{
+      control: 'radio',
+      options: [true,false]
+    }
+    
   },
 }
 export default meta
 
 type Story = StoryObj<typeof Header>
 
-export const Menu: Story = {
+export const none: Story = {
   args: {
-    leftIcon: 'menu',
+    leftIcon: 'none',
   },
 }
 
@@ -30,13 +36,4 @@ export const Back: Story = {
   },
 }
 
-export const WithRightSlot: Story = {
-  args: {
-    leftIcon: 'menu',
-    rightSlot: (
-      <button className="px-4 py-1.5 rounded-full bg-keepy-purple font-pretendard text-xs font-medium text-white">
-        저장
-      </button>
-    ),
-  },
-}
+

@@ -7,8 +7,8 @@ const defaultProps = {
   name: 'Air Max Pulse',
   brand: 'Nike',
   price: '₩160,000',
-  source: 'NIKE OFFICIAL',
-  saved: '2일 전 저장',
+  created: '2',
+  isPurchased: true,
 }
 
 describe('ItemCard', () => {
@@ -18,16 +18,6 @@ describe('ItemCard', () => {
     expect(screen.getByText('Nike')).toBeInTheDocument()
     expect(screen.getByText('₩160,000')).toBeInTheDocument()
     expect(screen.getByText('2일 전 저장')).toBeInTheDocument()
-  })
-
-  it('badge가 전달되면 렌더링한다', () => {
-    render(<ItemCard {...defaultProps} badge="구매 완료" />)
-    expect(screen.getByText('구매 완료')).toBeInTheDocument()
-  })
-
-  it('badge가 없으면 렌더링하지 않는다', () => {
-    render(<ItemCard {...defaultProps} />)
-    expect(screen.queryByText('구매 완료')).not.toBeInTheDocument()
   })
 
   it('클릭 시 onClick을 호출한다', () => {
