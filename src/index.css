@@ -24,6 +24,28 @@
   --font-manrope:     'Manrope', sans-serif;
   --font-pretendard:  'Pretendard Variable', 'Pretendard', sans-serif;
   --font-poetsen:     'Poetsen One', sans-serif;
+
+  /* Font weights */
+  --font-weight-regular:  400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+
+  /* Border radius */
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-pill: 9999px;
+
+  /* Touch targets */
+  --touch-target-min: 44px;
+
+  /* Shadows */
+  --shadow-sm:       0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md:       0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg:       0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-glow:     0 0 12px rgba(112, 102, 245, 0.4);
 }
 
 /* Global resets */
