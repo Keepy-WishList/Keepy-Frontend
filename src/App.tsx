@@ -1,36 +1,19 @@
-import { useState } from 'react'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Onboarding from './pages/Onboarding'
 import Wishlist from './pages/Wishlist'
 import ProductDetail from './pages/ProductDetail'
-import Search from './pages/Search'
-
-type Page = 'onboarding' | 'wishlist' | 'detail' | 'search'
 
 export default function App() {
-  const [page, setPage] = useState<Page>('onboarding')
-
-  const goTo = (p: Page) => setPage(p)
-
   return (
-    <div className="app-shell">
-      {page === 'onboarding' && (
-        <Onboarding onStart={() => goTo('wishlist')} />
-      )}
-      {page === 'wishlist' && (
-        <Wishlist
-          onProductClick={() => goTo('detail')}
-          onSearchClick={() => goTo('search')}
-        />
-      )}
-      {page === 'detail' && (
-        <ProductDetail onBack={() => goTo('wishlist')} onSearchClick={() => goTo('search')} />
-      )}
-      {page === 'search' && (
-        <Search
-          onBack={() => goTo('wishlist')}
-          onProductClick={() => goTo('detail')}
-        />
-      )}
-    </div>
+    <BrowserRouter>
+      <div className="app-shell">
+        <Routes>
+          <Route path="/" element={<Onboarding />} />
+          <Route path="/home" element={<Wishlist />} />
+          <Route path="/detail" element={<ProductDetail />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   )
 }
