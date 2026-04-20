@@ -18,6 +18,7 @@ const meta: Meta<typeof ItemCard> = {
     brand: 'Nike',
     price: '₩160,000',
     created: '2',
+    isPurchased: false,
   },
 }
 export default meta
